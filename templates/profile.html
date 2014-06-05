@@ -1,0 +1,8 @@
+<div class="app">
+
+	<h1> {{ user.name }}'s Bunk Feed</h1>
+	{% include 'bunk_feed.html' with bunk_list=user_bunk_list user=user %}
+
+	<a href="/{{user.id}}/bunk/">Bunk somebody!</a>
+
+</div>

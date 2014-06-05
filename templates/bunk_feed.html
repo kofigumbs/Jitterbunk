@@ -1,0 +1,49 @@
+{% if bunk_list %}
+    {% for bunk in bunk_list %}
+	    <div class="row_item">
+        	
+	        <div class="icon_wrapper">
+	        	{% if user == bunk.from_user %}
+				    <img src="https://lh6.googleusercontent.com/-yCSPOQIJ7hs/AAAAAAAAAAI/AAAAAAAAAXU/NDy1THyltBA/photo.jpg">
+		        
+		        {% else %}
+	        		<a href="/{{ bunk.from_user.id }}/">
+	        			<img src="{{ bunk.from_user.photo }}">
+		        		{{ bunk.from_user }}
+		        	</a>
+				{% endif %}
+	        </div>
+
+
+        	<p> BUNKED </p>
+
+    		<div class="icon_wrapper">
+				{% if user == bunk.to_user %}
+				    <img src="https://lh6.googleusercontent.com/-yCSPOQIJ7hs/AAAAAAAAAAI/AAAAAAAAAXU/NDy1THyltBA/photo.jpg">
+					
+				{% else %}
+	        		<a href="/{{ bunk.to_user.id }}/">
+	        			<img src="{{ bunk.to_user.photo }}">
+		        		{{ bunk.to_user }}
+		        	</a>
+				{% endif %}
+	        </div>
+
+        	<p class="vert-align"> at {{ bunk.time|date:"H:i" }} on {{ bunk.time|date:"M j, Y" }} </p>
+	    </div>
+    {% endfor %}
+
+{% else %}
+    <p>No bunks are available.</p>
+{% endif %}
+
+<style>
+	img { max-width: 100px; height: 100px; }
+	p { display:inline; float: left; line-height: 100px; }
+	.app { width: 480px; margin: 0 auto; }
+	.row_item { overflow: hidden; }
+	.icon_wrapper { max-width: 100px; text-align: center; 
+		float: left; margin: 10px; }
+	.you { margin-left: 15px; margin-right: 15px; 
+		font-weight: bold; font-size: 20px; }
+</style>

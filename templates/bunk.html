@@ -1,0 +1,7 @@
+<h1>Hi, {{object}}!</h1>
+<p>Who yur gunna bunk?</p>
+<form action="/{{object.id}}/" method="POST">
+	<input type="text" name="username" placeholder="type username..."><br>
+	<input type="submit" value="Bunk">
+	{% csrf_token %}
+</form>
